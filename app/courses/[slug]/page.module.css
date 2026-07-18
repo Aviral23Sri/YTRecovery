@@ -1,0 +1,274 @@
+.page { display: flex; flex-direction: column; }
+
+/* ── Course Hero ── */
+.courseHero {
+  padding: var(--space-8) 0 var(--space-7);
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  position: relative;
+  overflow: hidden;
+}
+
+.courseHero::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  left: -200px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(232,162,61,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.heroInner {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: var(--space-7);
+  align-items: start;
+}
+
+/* ── Left ── */
+.heroLeft { display: flex; flex-direction: column; gap: var(--space-4); }
+
+.heroBreadcrumb {
+  font-size: 0.8rem;
+  color: var(--color-muted);
+}
+
+.breadcrumbLink {
+  color: var(--color-secondary);
+  transition: color 0.15s;
+}
+.breadcrumbLink:hover { color: var(--color-accent); }
+.breadcrumbCurrent { color: var(--color-muted); }
+
+.courseBadges { display: flex; gap: var(--space-2); flex-wrap: wrap; }
+
+.courseTitle {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  line-height: 1.12;
+}
+
+.courseTagline {
+  font-size: 1.05rem;
+  color: var(--color-secondary);
+  line-height: 1.65;
+  max-width: 580px;
+}
+
+.courseMeta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border);
+}
+
+/* ── Pricing Card ── */
+.pricingCard {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border-2);
+  border-radius: var(--radius-xl);
+  padding: var(--space-5);
+  position: sticky;
+  top: calc(var(--nav-height) + var(--space-5));
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+}
+
+.pricingHeader { display: flex; flex-direction: column; gap: var(--space-2); }
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.price {
+  font-family: var(--font-headline);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.originalPrice {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-muted);
+  text-decoration: line-through;
+}
+
+.pricingNote {
+  font-size: 0.78rem;
+  color: var(--color-muted);
+}
+
+.enrollBtn, .curriculumBtn {
+  width: 100%;
+  justify-content: center;
+}
+
+.pricingFeatures {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border);
+}
+
+.pricingFeatures li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 0.85rem;
+  color: var(--color-secondary);
+}
+
+.checkIcon { display: flex; flex-shrink: 0; }
+
+/* ── Section titles ── */
+.sectionTitle {
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+}
+
+/* ── What you'll learn ── */
+.learnSection { background: var(--color-bg); }
+
+.highlightGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4) var(--space-6);
+  margin-top: var(--space-6);
+  list-style: none;
+}
+
+.highlightItem {
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+  font-size: 0.925rem;
+  color: var(--color-secondary);
+  line-height: 1.55;
+}
+
+.highlightCheck { flex-shrink: 0; margin-top: 2px; }
+
+/* ── Description ── */
+.descSection { background: var(--color-surface); }
+
+.descGrid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: var(--space-8);
+  align-items: start;
+}
+
+.whoFor {
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+}
+
+.whoForTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: var(--space-4);
+  color: var(--color-text);
+}
+
+.whoForList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.whoForList li {
+  font-size: 0.875rem;
+  color: var(--color-secondary);
+  line-height: 1.5;
+}
+
+/* ── Curriculum ── */
+.curriculumSection { background: var(--color-bg); }
+
+.curriculumHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-6);
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.lockedNote {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--color-muted);
+  letter-spacing: 0.04em;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-3);
+  white-space: nowrap;
+  margin-top: var(--space-2);
+}
+
+/* ── Bottom CTA ── */
+.bottomCta {
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  padding: var(--space-8) 0;
+}
+
+.bottomCtaInner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+}
+
+.bottomCtaHeading {
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+  margin-bottom: var(--space-3);
+}
+
+.bottomCtaRight {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+
+.bottomPrice {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 960px) {
+  .heroInner { grid-template-columns: 1fr; }
+  .pricingCard { position: static; }
+  .descGrid { grid-template-columns: 1fr; }
+  .highlightGrid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .curriculumHeader { flex-direction: column; }
+  .bottomCtaInner { flex-direction: column; align-items: flex-start; }
+  .bottomCtaRight { width: 100%; }
+  .bottomCtaRight .btn { width: 100%; }
+}

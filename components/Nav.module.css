@@ -1,0 +1,142 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(16, 20, 31, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.nav {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-5);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  height: var(--nav-height);
+  gap: var(--space-5);
+}
+
+/* ── Brand ── */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-shrink: 0;
+}
+
+.brandIcon {
+  display: flex;
+  align-items: center;
+  color: var(--color-accent);
+}
+
+.brandText {
+  font-family: var(--font-headline);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--color-text);
+  letter-spacing: -0.01em;
+}
+
+.brandAccent { color: var(--color-accent); }
+
+/* ── Links ── */
+.links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  list-style: none;
+  margin-left: auto;
+}
+
+.link {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-secondary);
+  padding: 8px 14px;
+  border-radius: var(--radius-md);
+  transition: color 0.15s;
+}
+
+.link:hover { color: var(--color-text); }
+
+/* ── Actions ── */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-shrink: 0;
+}
+
+/* ── Hamburger ── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: auto;
+  padding: 4px;
+  border-radius: var(--radius-sm);
+}
+
+.line {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--color-text);
+  border-radius: 2px;
+  transition: transform 0.25s var(--ease-out), opacity 0.2s;
+}
+
+.lineOpen1 { transform: translateY(7px) rotate(45deg); }
+.lineOpen2 { opacity: 0; }
+.lineOpen3 { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── Mobile menu ── */
+.mobileMenu {
+  border-top: 1px solid var(--color-border);
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.mobileMenu ul { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+
+.mobileLink {
+  display: block;
+  padding: 12px var(--space-3);
+  font-family: var(--font-headline);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-secondary);
+  border-radius: var(--radius-md);
+  transition: color 0.15s, background 0.15s;
+}
+
+.mobileLink:hover { color: var(--color-text); background: var(--color-surface); }
+
+.mobileCtas {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.mobileCtas .btn { flex: 1; justify-content: center; }
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .links, .actions { display: none; }
+  .hamburger { display: flex; }
+}

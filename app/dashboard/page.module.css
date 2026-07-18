@@ -1,0 +1,10 @@
+.page { padding: var(--space-9) 0; }
+.header { display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-7); flex-wrap: wrap; }
+.empty {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: var(--space-9);
+  background: var(--color-surface);
+  border: 1px dashed var(--color-border-2);
+  border-radius: var(--radius-xl);
+  text-align: center;
+}
