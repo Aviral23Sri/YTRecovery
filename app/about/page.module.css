@@ -1,3 +1,37 @@
 .page { padding: var(--space-9) 0; }
 .inner { max-width: 720px; display: flex; flex-direction: column; gap: var(--space-4); }
-.body { display: flex; flex-direction: column; gap: var(--space-4); margin-top: var(--space-5); }
+.body { display: flex; flex-direction: column; gap: var(--space-5); margin-top: var(--space-5); }
+
+.focusAreas {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.focusList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.focusItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: 0.925rem;
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.focusDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  flex-shrink: 0;
+}

@@ -7,10 +7,10 @@ export const metadata: Metadata = {
 }
 
 const CONTACT_LINKS = [
-  { label: 'Email', value: '[PLACEHOLDER: email@example.com]', href: 'mailto:[PLACEHOLDER]', icon: '✉' },
-  { label: 'Phone / WhatsApp', value: '[PLACEHOLDER: +91 XXXXX XXXXX]', href: 'tel:[PLACEHOLDER]', icon: '📱' },
-  { label: 'Instagram', value: '@[PLACEHOLDER]', href: 'https://instagram.com/[PLACEHOLDER]', icon: '📸' },
-  { label: 'YouTube Channel', value: '[PLACEHOLDER: Channel Name]', href: 'https://youtube.com/@[PLACEHOLDER]', icon: '▶' },
+  { label: 'Email', value: 'akashyoutubehelp@gmail.com', href: 'mailto:akashyoutubehelp@gmail.com', icon: '✉' },
+  { label: 'Phone / WhatsApp', value: '+91 9506 606823', href: 'tel:+919506606823', icon: '📱' },
+  { label: 'Instagram', value: '@akashyoutuber01', href: 'https://www.instagram.com/akashyoutuber01', icon: '📸' },
+  { label: 'YouTube Channel', value: '@akashyoutuber', href: 'https://youtube.com/@akashyoutuber', icon: '▶' },
 ]
 
 export default function ContactPage() {

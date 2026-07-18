@@ -9,14 +9,11 @@ export const metadata: Metadata = {
     'Get your suspended or demonetized YouTube channel back. Learn the real system behind YouTube policy enforcement and the exact strategy to recover — from a creator who has done it.',
 }
 
-/* ─────────────────────────────────────────────
-   Sample YouTube video IDs (client's public content)
-   Replace with real video IDs from the client
-───────────────────────────────────────────── */
+/* Real YouTube videos from Akash Kanojiya's channel */
 const SAMPLE_VIDEOS = [
-  { id: 'dQw4w9WgXcQ', title: 'How I Got My Monetization Back After Suspension' },
-  { id: 'kXYiU_JCYtU', title: 'The Truth About YouTube\'s Inauthentic Content Policy' },
-  { id: '9bZkp7q19f0', title: 'Appeal Strategy That Actually Works in 2026' },
+  { id: 'QxQfuSKmz04', title: 'Watch this video from Akash Kanojiya' },
+  { id: 'Mxc3XkYYdhg', title: 'Watch this video from Akash Kanojiya' },
+  { id: '3eNTmiBgNtQ', title: 'Watch this video from Akash Kanojiya' },
 ]
 
 /* Hard-coded course data for Phase 1 (no DB connection yet) */
@@ -27,26 +24,7 @@ const COURSE_PREVIEW = {
   lessonCount: 31,
 }
 
-const TESTIMONIALS = [
-  {
-    quote: 'I had given up after my third appeal was rejected. This course showed me exactly what I was saying wrong. Got approved in 14 days.',
-    name: 'Rahul M.',
-    handle: '@rahultechvlogs',
-    recovered: true,
-  },
-  {
-    quote: 'The Related Channel Suspension module alone was worth the price. I had no idea YouTube could see that connection.',
-    name: 'Priya S.',
-    handle: '@priyacreates',
-    recovered: true,
-  },
-  {
-    quote: 'Finally an honest course — no hype, just the actual policy mechanics explained so a non-lawyer can understand them.',
-    name: 'Arjun K.',
-    handle: '@arjundigital',
-    recovered: true,
-  },
-]
+// [PLACEHOLDER: Real student testimonials — replace with verified quotes from actual students before publishing]
 
 export default function HomePage() {
   return (
@@ -141,13 +119,14 @@ export default function HomePage() {
       </div>
 
       {/* ── Social Proof Numbers ── */}
+      {/* [PLACEHOLDER: Replace num values with verified, real stats before publishing] */}
       <section className={styles.proofStrip} aria-label="Social proof">
         <div className="container">
           <div className={styles.proofGrid}>
             {[
-              { num: '500+', label: 'Creators Enrolled' },
-              { num: '94%', label: 'Appeal Success Rate' },
-              { num: '14 days', label: 'Avg. Recovery Time' },
+              { num: '[PLACEHOLDER]', label: 'Creators Enrolled' },
+              { num: '[PLACEHOLDER]', label: 'Appeal Success Rate' },
+              { num: '[PLACEHOLDER]', label: 'Avg. Recovery Time' },
               { num: '₹0', label: 'YouTube Fees Required' },
             ].map(({ num, label }) => (
               <div key={label} className={styles.proofItem}>
@@ -178,14 +157,10 @@ export default function HomePage() {
               <span className="badge badge--accent" style={{ marginBottom: 'var(--space-4)', display: 'inline-flex' }}>
                 About the instructor
               </span>
-              <h2 id="about-heading">[PLACEHOLDER: Instructor Name]</h2>
+              <h2 id="about-heading">Akash Kanojiya</h2>
               <p style={{ marginTop: 'var(--space-4)' }}>
-                [PLACEHOLDER: Brief instructor bio — 2–3 sentences. E.g., &quot;I had my channel of 200K subscribers
-                suspended overnight in 2023. After months of rejections and research, I cracked the system,
-                got fully reinstated, and rebuilt to 400K. Now I teach creators exactly what I learned.&quot;]
-              </p>
-              <p style={{ marginTop: 'var(--space-3)' }}>
-                [PLACEHOLDER: Second paragraph — credibility markers, subscriber count, etc.]
+                Official Website of Akash YouTuber. Helping YouTube creators build original,
+                monetizable channels through practical strategies, in-depth courses, and proven guidance.
               </p>
               <Link href="/about" className="btn btn--outline" style={{ marginTop: 'var(--space-5)', alignSelf: 'flex-start' }}>
                 Full Story →
@@ -226,36 +201,9 @@ export default function HomePage() {
       </section>
 
       {/* ── Testimonials ── */}
-      <section className={`section ${styles.testimonials}`} aria-labelledby="testimonials-heading">
-        <div className="container">
-          <div className={styles.sectionHeader}>
-            <span className="badge badge--success">
-              <span aria-hidden="true">✓</span>
-              Results
-            </span>
-            <h2 id="testimonials-heading" style={{ marginTop: 'var(--space-3)' }}>Creators who recovered</h2>
-          </div>
-
-          <div className={styles.testimonialGrid}>
-            {TESTIMONIALS.map((t) => (
-              <blockquote key={t.handle} className={styles.testimonialCard}>
-                <p className={styles.testimonialQuote}>&ldquo;{t.quote}&rdquo;</p>
-                <footer className={styles.testimonialFooter}>
-                  <span className={styles.testimonialName}>{t.name}</span>
-                  <span className="mono" style={{ color: 'var(--color-muted)', fontSize: '0.72rem' }}>
-                    {t.handle}
-                  </span>
-                  {t.recovered && (
-                    <span className="badge badge--success" style={{ marginLeft: 'auto' }}>
-                      Recovered
-                    </span>
-                  )}
-                </footer>
-              </blockquote>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* [PLACEHOLDER: Add real student testimonials here once collected.
+           Use the testimonialGrid / testimonialCard CSS classes already defined.
+           Each card needs: a quote, student name, handle, and recovered badge.] */}
 
       {/* ── Final CTA ── */}
       <section className={styles.finalCta} aria-labelledby="final-cta-heading">
