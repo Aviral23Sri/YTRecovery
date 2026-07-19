@@ -1,7 +1,6 @@
 'use client'
 
 import Link from 'next/link'
-import Image from 'next/image'
 import { useState } from 'react'
 import styles from './Nav.module.css'
 
@@ -14,13 +13,13 @@ export default function Nav() {
         <div className={styles.inner}>
           {/* Brand */}
           <Link href="/" className={styles.brand} aria-label="Home">
-            <Image
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
               src="/akash-logo.png"
               alt="Akash Youtuber"
               width={36}
               height={36}
               className={styles.brandLogo}
-              priority
             />
             <span className={styles.brandText}>Akash<span className={styles.brandAccent}> Youtuber</span></span>
           </Link>

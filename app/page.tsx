@@ -151,7 +151,6 @@ export default function HomePage() {
                   width={260}
                   height={260}
                   className={styles.avatarImg}
-                  priority
                 />
               </div>
               <div className={styles.avatarAccentLine} aria-hidden="true" />
