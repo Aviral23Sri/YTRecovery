@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useState } from 'react'
 import styles from './Nav.module.css'
 
@@ -13,12 +14,15 @@ export default function Nav() {
         <div className={styles.inner}>
           {/* Brand */}
           <Link href="/" className={styles.brand} aria-label="Home">
-            <span className={styles.brandIcon} aria-hidden="true">
-              <svg width="22" height="18" viewBox="0 0 22 18" fill="none">
-                <path d="M1 12 Q5 4 9 9 Q13 14 17 3 L21 6" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </span>
-            <span className={styles.brandText}>YT<span className={styles.brandAccent}>Recovery</span></span>
+            <Image
+              src="/akash-logo.png"
+              alt="Akash Youtuber"
+              width={36}
+              height={36}
+              className={styles.brandLogo}
+              priority
+            />
+            <span className={styles.brandText}>Akash<span className={styles.brandAccent}> Youtuber</span></span>
           </Link>
 
           {/* Desktop links */}

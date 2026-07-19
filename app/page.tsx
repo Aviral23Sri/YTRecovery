@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import SignalLine from '@/components/SignalLine'
 import styles from './page.module.css'
 
@@ -143,12 +144,15 @@ export default function HomePage() {
         <div className="container">
           <div className={styles.aboutGrid}>
             <div className={styles.aboutImageWrap}>
-              {/* Placeholder avatar */}
-              <div className={styles.avatarPlaceholder} aria-label="[PLACEHOLDER: Client photo]">
-                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-                  <circle cx="24" cy="18" r="9" stroke="var(--color-border-2)" strokeWidth="2"/>
-                  <path d="M6 42c0-9.941 8.059-18 18-18s18 8.059 18 18" stroke="var(--color-border-2)" strokeWidth="2" strokeLinecap="round"/>
-                </svg>
+              <div className={styles.avatarFrame}>
+                <Image
+                  src="/akash-logo.png"
+                  alt="Akash Kanojiya — YouTube Expert"
+                  width={260}
+                  height={260}
+                  className={styles.avatarImg}
+                  priority
+                />
               </div>
               <div className={styles.avatarAccentLine} aria-hidden="true" />
             </div>

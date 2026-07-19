@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import styles from './page.module.css'
 
 export const metadata: Metadata = {
@@ -20,29 +21,47 @@ export default function AboutPage() {
       <div className="container">
         <div className={styles.inner}>
           <span className="badge badge--accent">About the Instructor</span>
-          <h1 style={{ marginTop: 'var(--space-4)' }}>Akash Kanojiya</h1>
 
-          <div className={styles.body}>
-            <p>
-              Official Website of Akash YouTuber. Helping YouTube creators build original,
-              monetizable channels through practical strategies, in-depth courses, and proven guidance.
-            </p>
-
-            <div className={styles.focusAreas}>
-              <span className="mono" style={{ color: 'var(--color-muted)', fontSize: '0.72rem', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-                Focus Areas
-              </span>
-              <ul className={styles.focusList} role="list">
-                {FOCUS_AREAS.map((area) => (
-                  <li key={area} className={styles.focusItem}>
-                    <span className={styles.focusDot} aria-hidden="true" />
-                    {area}
-                  </li>
-                ))}
-              </ul>
+          <div className={styles.profileGrid}>
+            {/* Photo */}
+            <div className={styles.photoWrap}>
+              <div className={styles.photoFrame}>
+                <Image
+                  src="/akash-logo.png"
+                  alt="Akash Kanojiya — YouTube Expert"
+                  width={300}
+                  height={300}
+                  className={styles.photo}
+                  priority
+                />
+              </div>
             </div>
 
-            {/* [PLACEHOLDER: Add longer bio, background story, and credibility markers here] */}
+            {/* Copy */}
+            <div className={styles.body}>
+              <h1>Akash Kanojiya</h1>
+
+              <p style={{ marginTop: 'var(--space-4)' }}>
+                Official Website of Akash YouTuber. Helping YouTube creators build original,
+                monetizable channels through practical strategies, in-depth courses, and proven guidance.
+              </p>
+
+              <div className={styles.focusAreas}>
+                <span className="mono" style={{ color: 'var(--color-muted)', fontSize: '0.72rem', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+                  Focus Areas
+                </span>
+                <ul className={styles.focusList} role="list">
+                  {FOCUS_AREAS.map((area) => (
+                    <li key={area} className={styles.focusItem}>
+                      <span className={styles.focusDot} aria-hidden="true" />
+                      {area}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* [PLACEHOLDER: Add longer bio, background story, and credibility markers here] */}
+            </div>
           </div>
         </div>
       </div>
