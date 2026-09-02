@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
+import { createClient } from '@/lib/supabase/server'
 
 export const metadata: Metadata = {
   title: {
@@ -19,11 +20,14 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const supabase = await createClient()
+  const { data: { user } } = await supabase.auth.getUser()
+
   return (
     <html lang="en" data-scroll-behavior="smooth">
       <body>
-        <Nav />
+        <Nav userEmail={user?.email} />
         <main>{children}</main>
         <Footer />
       </body>

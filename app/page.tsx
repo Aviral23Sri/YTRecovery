@@ -189,7 +189,7 @@ export default function HomePage() {
               <div key={v.id} className={styles.videoCard}>
                 <div className={styles.videoWrap}>
                   <iframe
-                    src={`https://www.youtube.com/embed/${v.id}`}
+                    src={`https://www.youtube-nocookie.com/embed/${v.id}?rel=0&modestbranding=1&origin=${encodeURIComponent('http://localhost:3000')}`}
                     title={v.title}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowFullScreen

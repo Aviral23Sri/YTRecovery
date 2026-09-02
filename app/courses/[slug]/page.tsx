@@ -1,8 +1,10 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import { createClient } from '@/lib/supabase/server'
 import SignalLine from '@/components/SignalLine'
 import CurriculumAccordion, { type Module } from '@/components/CurriculumAccordion'
+import EnrollButton from '@/components/EnrollButton'
 import styles from './page.module.css'
 
 /* ─────────────────────────────────────────────────────────────
@@ -20,7 +22,7 @@ const COURSE = {
 Across 8 modules and 31 lessons, you'll go from frustrated to fluent in YouTube's review system. You'll understand the inauthentic content flags that catch most creators off guard, how related-channel suspensions work, and the 30-day reapply strategy that has helped hundreds of creators get reinstated.`,
   price: 4999,
   originalPrice: 7999,
-  thumbnail_url: null,
+  thumbnail_url: '/course-thumbnail.jpg',
   highlights: [
     'Understand how YouTube flags, reviews, and strikes actually work',
     'Decode every type of suspension: inauthentic content, related channel, policy strike',
@@ -119,6 +121,17 @@ export default async function CourseDetailPage({ params }: Props) {
   const { slug } = await params
   if (slug !== COURSE.slug) notFound()
 
+  const supabase = await createClient()
+  const { data: { user } } = await supabase.auth.getUser()
+
+  // Fetch the real course ID from the database (since we only have one course right now)
+  const { data: dbCourse } = await supabase
+    .from('courses')
+    .select('id')
+    .eq('is_published', true)
+    .single()
+
+  const realCourseId = dbCourse?.id ?? COURSE.id
   const discount = Math.round((1 - COURSE.price / COURSE.originalPrice) * 100)
 
   return (
@@ -156,8 +169,20 @@ export default async function CourseDetailPage({ params }: Props) {
               </div>
             </div>
 
-            {/* Right — sticky pricing card */}
-            <aside className={styles.pricingCard} aria-label="Course pricing">
+            {/* Right — thumbnail + sticky pricing card */}
+            <div className={styles.heroRight}>
+              {/* Course thumbnail */}
+              <div className={styles.thumbnailWrap}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={COURSE.thumbnail_url}
+                  alt={`${COURSE.title} — Course Thumbnail`}
+                  className={styles.thumbnail}
+                />
+              </div>
+
+              {/* Pricing card */}
+              <aside className={styles.pricingCard} aria-label="Course pricing">
               <div className={styles.pricingHeader}>
                 <div className={styles.priceRow}>
                   <span className={styles.price}>₹{COURSE.price.toLocaleString('en-IN')}</span>
@@ -167,13 +192,12 @@ export default async function CourseDetailPage({ params }: Props) {
                 <p className={styles.pricingNote}>One-time payment · Lifetime access</p>
               </div>
 
-              <Link
-                href="/auth/signup"
-                className={`btn btn--primary ${styles.enrollBtn}`}
-                id="course-enroll-cta"
-              >
-                Enroll Now
-              </Link>
+              <EnrollButton
+                courseId={realCourseId}
+                price={COURSE.price}
+                courseName={COURSE.title}
+                userEmail={user?.email}
+              />
               <Link
                 href="#curriculum"
                 className={`btn btn--outline ${styles.curriculumBtn}`}
@@ -201,6 +225,7 @@ export default async function CourseDetailPage({ params }: Props) {
                 ))}
               </ul>
             </aside>
+            </div>  {/* end heroRight */}
           </div>
         </div>
       </section>
@@ -300,14 +325,14 @@ export default async function CourseDetailPage({ params }: Props) {
                 <span className={styles.price}>₹{COURSE.price.toLocaleString('en-IN')}</span>
                 <span className={styles.originalPrice}>₹{COURSE.originalPrice.toLocaleString('en-IN')}</span>
               </div>
-              <Link
-                href="/auth/signup"
-                className="btn btn--primary"
-                id="bottom-course-enroll-cta"
-                style={{ padding: '16px 36px', fontSize: '1.05rem' }}
-              >
-                Enroll Now
-              </Link>
+              <div style={{ fontSize: '1.05rem' }}>
+                <EnrollButton
+                  courseId={realCourseId}
+                  price={COURSE.price}
+                  courseName={COURSE.title}
+                  userEmail={user?.email}
+                />
+              </div>
             </div>
           </div>
         </div>

@@ -17,6 +17,7 @@ const COURSES = [
     moduleCount: 8,
     lessonCount: 31,
     tag: 'Bestseller',
+    thumbnail_url: '/course-thumbnail.jpg',
   },
 ]
 
@@ -36,11 +37,20 @@ export default function CoursesPage() {
           {COURSES.map((c) => (
             <article key={c.slug} className={styles.card} role="listitem">
               <div className={styles.cardThumbnail} aria-hidden="true">
-                <div className={styles.thumbnailPlaceholder}>
-                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-                    <path d="M8 30 Q14 14 20 20 Q26 26 32 8" stroke="var(--color-accent)" strokeWidth="2" strokeLinecap="round"/>
-                  </svg>
-                </div>
+                {c.thumbnail_url ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={c.thumbnail_url}
+                    alt={c.title}
+                    className={styles.thumbnailImg}
+                  />
+                ) : (
+                  <div className={styles.thumbnailPlaceholder}>
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                      <path d="M8 30 Q14 14 20 20 Q26 26 32 8" stroke="var(--color-accent)" strokeWidth="2" strokeLinecap="round"/>
+                    </svg>
+                  </div>
+                )}
                 {c.tag && <span className={`badge badge--accent ${styles.cardBadge}`}>{c.tag}</span>}
               </div>
               <div className={styles.cardBody}>

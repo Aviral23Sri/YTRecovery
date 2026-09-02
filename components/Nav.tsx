@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import styles from './Nav.module.css'
 
-export default function Nav() {
+export default function Nav({ userEmail }: { userEmail?: string }) {
   const [open, setOpen] = useState(false)
 
   return (
@@ -34,8 +34,19 @@ export default function Nav() {
 
           {/* Desktop CTA */}
           <div className={styles.actions}>
-            <Link href="/auth/login" className="btn btn--ghost">Sign In</Link>
-            <Link href="/courses" className="btn btn--primary">Enroll Now</Link>
+            {userEmail ? (
+              <>
+                <Link href="/dashboard" className="btn btn--ghost">Dashboard</Link>
+                <form action="/auth/signout" method="POST" style={{ margin: 0 }}>
+                  <button type="submit" className="btn btn--primary">Sign Out</button>
+                </form>
+              </>
+            ) : (
+              <>
+                <Link href="/auth/login" className="btn btn--ghost">Sign In</Link>
+                <Link href="/courses" className="btn btn--primary">Enroll Now</Link>
+              </>
+            )}
           </div>
 
           {/* Mobile hamburger */}
@@ -65,8 +76,19 @@ export default function Nav() {
               ))}
             </ul>
             <div className={styles.mobileCtas}>
-              <Link href="/auth/login" className="btn btn--outline" onClick={() => setOpen(false)}>Sign In</Link>
-              <Link href="/courses" className="btn btn--primary" onClick={() => setOpen(false)}>Enroll Now</Link>
+              {userEmail ? (
+                <>
+                  <Link href="/dashboard" className="btn btn--outline" onClick={() => setOpen(false)}>Dashboard</Link>
+                  <form action="/auth/signout" method="POST" style={{ margin: 0, width: '100%' }}>
+                    <button type="submit" className="btn btn--primary" style={{ width: '100%' }} onClick={() => setOpen(false)}>Sign Out</button>
+                  </form>
+                </>
+              ) : (
+                <>
+                  <Link href="/auth/login" className="btn btn--outline" onClick={() => setOpen(false)}>Sign In</Link>
+                  <Link href="/courses" className="btn btn--primary" onClick={() => setOpen(false)}>Enroll Now</Link>
+                </>
+              )}
             </div>
           </div>
         )}
