@@ -26,7 +26,24 @@ export async function proxy(request: NextRequest) {
   )
 
   // Refresh session — keeps auth cookies up to date
-  const { data: { user } } = await supabase.auth.getUser()
+  let user = null
+  try {
+    const { data, error } = await supabase.auth.getUser()
+    if (error) {
+      if (error.code === 'refresh_token_not_found' || error.status === 400) {
+        // Clear stale session cookies so subsequent requests do not log refresh_token_not_found
+        request.cookies.getAll().forEach((cookie) => {
+          if (cookie.name.startsWith('sb-')) {
+            supabaseResponse.cookies.delete(cookie.name)
+          }
+        })
+      }
+    } else {
+      user = data.user
+    }
+  } catch {
+    user = null
+  }
 
   // Protect dashboard route
   if (

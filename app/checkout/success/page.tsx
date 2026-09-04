@@ -27,7 +27,8 @@ export default async function CheckoutSuccessPage({ searchParams }: Props) {
 
   // ── Check if purchase is recorded (webhook may be async) ──────
   const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
+  const { data } = await supabase.auth.getUser()
+  const user = data?.user ?? null
 
   let status: 'success' | 'pending' | 'notfound' = 'notfound'
 

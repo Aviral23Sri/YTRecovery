@@ -122,7 +122,8 @@ export default async function CourseDetailPage({ params }: Props) {
   if (slug !== COURSE.slug) notFound()
 
   const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
+  const { data } = await supabase.auth.getUser()
+  const user = data?.user ?? null
 
   // Fetch the real course ID from the database (since we only have one course right now)
   const { data: dbCourse } = await supabase
