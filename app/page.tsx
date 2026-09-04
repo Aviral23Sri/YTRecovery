@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
 import SignalLine from '@/components/SignalLine'
+import BookCallButton from '@/components/BookCallButton'
 import styles from './page.module.css'
 
 export const metadata: Metadata = {
@@ -207,6 +208,58 @@ export default function HomePage() {
       {/* [PLACEHOLDER: Add real student testimonials here once collected.
            Use the testimonialGrid / testimonialCard CSS classes already defined.
            Each card needs: a quote, student name, handle, and recovered badge.] */}
+
+      {/* ── 1:1 Consultation Section ── */}
+      <section className={`section ${styles.consultation}`} aria-labelledby="consult-heading">
+        <div className="container">
+          <div className={styles.consultGrid}>
+
+            {/* Left — image */}
+            <div className={styles.consultImageWrap}>
+              <Image
+                src="/Call-Support.jpg"
+                alt="Akash on a 1:1 consultation call"
+                width={560}
+                height={420}
+                className={styles.consultImg}
+                priority={false}
+              />
+            </div>
+
+            {/* Right — copy + CTA */}
+            <div className={styles.consultCopy}>
+              <span className="badge badge--accent">Direct Access</span>
+
+              <h2 id="consult-heading" className={styles.consultHeading}>
+                Have a specific question?{' '}
+                <span className={styles.heroAccent}>Talk to Akash directly.</span>
+              </h2>
+
+              <p className={styles.consultSubtext}>
+                Skip the guesswork. Bring your situation — your channel, your appeal,
+                your specific violation — and get a direct answer from someone who has
+                navigated this system firsthand. No generic advice, no waiting on
+                YouTube support.
+              </p>
+
+              <ul className={styles.consultBullets}>
+                <li>45-minute 1:1 video call</li>
+                <li>Review your appeal or channel situation</li>
+                <li>Specific, actionable next steps — not templates</li>
+              </ul>
+
+              <div className={styles.consultFooter}>
+                <div className={styles.consultPrice}>
+                  <span className={styles.consultPriceAmount}>₹999</span>
+                  <span className={styles.consultPriceLabel}>per session</span>
+                </div>
+                <BookCallButton />
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
 
       {/* ── Final CTA ── */}
       <section className={styles.finalCta} aria-labelledby="final-cta-heading">

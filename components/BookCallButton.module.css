@@ -1,0 +1,33 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.error {
+  background: rgba(231, 76, 60, 0.1);
+  border: 1px solid rgba(231, 76, 60, 0.25);
+  color: #e74c3c;
+  border-radius: var(--radius-md);
+  padding: 10px var(--space-4);
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.bookBtn {
+  gap: var(--space-2);
+  justify-content: center;
+}
+
+.spinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(16,20,31,0.3);
+  border-top-color: rgba(16,20,31,0.9);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }

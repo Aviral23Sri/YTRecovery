@@ -48,13 +48,35 @@ CREATE TABLE IF NOT EXISTS purchases (
   purchased_at        TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
+-- ── Consultations (1:1 call bookings — separate from course purchases) ──
+-- Works for both authenticated and guest users.
+-- user_id is nullable so guests don't need an account.
+CREATE TABLE IF NOT EXISTS consultations (
+  id                  UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id             UUID REFERENCES auth.users(id) ON DELETE SET NULL,
+  guest_name          TEXT,
+  guest_email         TEXT,
+  guest_phone         TEXT,
+  razorpay_order_id   TEXT UNIQUE,
+  razorpay_payment_id TEXT UNIQUE,
+  amount_paid         NUMERIC(10,2),
+  status              TEXT NOT NULL DEFAULT 'pending', -- pending | success | failed
+  created_at          TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
 -- ── Row Level Security ────────────────────────────────────
 
-ALTER TABLE courses   ENABLE ROW LEVEL SECURITY;
-ALTER TABLE modules   ENABLE ROW LEVEL SECURITY;
-ALTER TABLE lessons   ENABLE ROW LEVEL SECURITY;
-ALTER TABLE profiles  ENABLE ROW LEVEL SECURITY;
-ALTER TABLE purchases ENABLE ROW LEVEL SECURITY;
+ALTER TABLE courses        ENABLE ROW LEVEL SECURITY;
+ALTER TABLE modules        ENABLE ROW LEVEL SECURITY;
+ALTER TABLE lessons        ENABLE ROW LEVEL SECURITY;
+ALTER TABLE profiles       ENABLE ROW LEVEL SECURITY;
+ALTER TABLE purchases      ENABLE ROW LEVEL SECURITY;
+ALTER TABLE consultations  ENABLE ROW LEVEL SECURITY;
+
+-- consultations: logged-in users can view their own rows only
+-- All inserts go through service_role (webhook / verify endpoint)
+CREATE POLICY "consultations_own_read" ON consultations
+  FOR SELECT USING (user_id = auth.uid());
 
 -- courses: anyone can read published courses
 CREATE POLICY "courses_public_read" ON courses

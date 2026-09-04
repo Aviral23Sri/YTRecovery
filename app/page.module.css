@@ -300,7 +300,114 @@
   color: var(--color-text);
 }
 
+/* ── 1:1 Consultation ── */
+.consultation {
+  background: var(--color-bg);
+  border-top: 1px solid var(--color-border);
+}
+
+.consultGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-9);
+  align-items: center;
+}
+
+.consultImageWrap {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid var(--color-border-2);
+  box-shadow: 0 24px 64px rgba(0,0,0,0.35);
+  aspect-ratio: 4/3;
+}
+
+.consultImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.consultCopy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.consultHeading {
+  line-height: 1.15;
+  margin-top: var(--space-2);
+}
+
+.consultSubtext {
+  font-size: 1.0rem;
+  color: var(--color-secondary);
+  line-height: 1.7;
+  max-width: 480px;
+}
+
+.consultBullets {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--color-border);
+}
+
+.consultBullets li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: 0.9rem;
+  color: var(--color-secondary);
+}
+
+.consultBullets li::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  flex-shrink: 0;
+}
+
+.consultFooter {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+  padding-top: var(--space-3);
+}
+
+.consultPrice {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.consultPriceAmount {
+  font-family: var(--font-headline);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1;
+}
+
+.consultPriceLabel {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--color-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 /* ── Final CTA ── */
+
 .finalCta {
   background: var(--color-surface);
   border-top: 1px solid var(--color-border);
@@ -340,6 +447,8 @@
   .aboutImageWrap { align-items: flex-start; }
   .videoGrid { grid-template-columns: 1fr; gap: var(--space-4); }
   .testimonialGrid { grid-template-columns: 1fr; }
+  .consultGrid { grid-template-columns: 1fr; gap: var(--space-7); }
+  .consultImageWrap { max-width: 100%; }
 }
 
 @media (max-width: 640px) {
