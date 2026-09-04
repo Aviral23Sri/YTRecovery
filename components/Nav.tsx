@@ -28,6 +28,7 @@ export default function Nav({ userEmail }: { userEmail?: string }) {
           <ul className={styles.links} role="list">
             <li><Link href="/" className={styles.link}>Home</Link></li>
             <li><Link href="/courses" className={styles.link}>Courses</Link></li>
+            <li><Link href="/#consultation" className={styles.link}>1:1 Call</Link></li>
             <li><Link href="/about" className={styles.link}>About</Link></li>
             <li><Link href="/contact" className={styles.link}>Contact</Link></li>
           </ul>
@@ -67,7 +68,7 @@ export default function Nav({ userEmail }: { userEmail?: string }) {
         {open && (
           <div id="mobile-menu" className={styles.mobileMenu}>
             <ul role="list">
-              {[['/', 'Home'], ['/courses', 'Courses'], ['/about', 'About'], ['/contact', 'Contact']].map(([href, label]) => (
+              {[['/', 'Home'], ['/courses', 'Courses'], ['/#consultation', '1:1 Call'], ['/about', 'About'], ['/contact', 'Contact']].map(([href, label]) => (
                 <li key={href}>
                   <Link href={href} className={styles.mobileLink} onClick={() => setOpen(false)}>
                     {label}

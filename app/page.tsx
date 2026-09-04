@@ -210,7 +210,7 @@ export default function HomePage() {
            Each card needs: a quote, student name, handle, and recovered badge.] */}
 
       {/* ── 1:1 Consultation Section ── */}
-      <section className={`section ${styles.consultation}`} aria-labelledby="consult-heading">
+      <section id="consultation" className={`section ${styles.consultation}`} aria-labelledby="consult-heading">
         <div className="container">
           <div className={styles.consultGrid}>
 
