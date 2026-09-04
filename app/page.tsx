@@ -219,8 +219,8 @@ export default function HomePage() {
               <Image
                 src="/Call-Support.jpg"
                 alt="Akash on a 1:1 consultation call"
-                width={560}
-                height={420}
+                width={1280}
+                height={715}
                 className={styles.consultImg}
                 priority={false}
               />
